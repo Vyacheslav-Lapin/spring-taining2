@@ -1,11 +1,13 @@
-package lab.model;
+package lab.model.simple;
 
-import lombok.Data;
+import lab.model.Country;
+import lab.model.Person;
+import lombok.Value;
 
 import java.util.List;
 
-@Data
-public class UsualPerson implements Person {
+@Value
+public class SimplePerson implements Person {
     private int id;
     private String name;
     private Country country;
@@ -15,7 +17,4 @@ public class UsualPerson implements Person {
     private boolean isProgrammer;
 
     private List<String> contacts;
-
-    public void sayHello(Person person) {
-    }
 }

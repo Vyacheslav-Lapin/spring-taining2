@@ -1,54 +1,44 @@
-import lab.model.Country;
+import lab.model.simple.SimpleCountry;
 import lab.model.Person;
-import lab.model.UsualPerson;
-import org.junit.jupiter.api.AfterEach;
+import lab.model.simple.SimplePerson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HelloWorldTest {
 
-	private static final String APPLICATION_CONTEXT_XML_FILE_NAME = "resources/application-context.xml";
+	private static final String APPLICATION_CONTEXT_XML_FILE_NAME = "application-context.xml";
 
-	private UsualPerson expectedPerson;
-
-	private AbstractApplicationContext context;
+	private BeanFactory context;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		context = new FileSystemXmlApplicationContext(
-				new String[] { APPLICATION_CONTEXT_XML_FILE_NAME });
-		expectedPerson = getExpectedPerson();
+		context = new ClassPathXmlApplicationContext(APPLICATION_CONTEXT_XML_FILE_NAME);
 	}
 
 	@Test
 	void testInitPerson() {
-		UsualPerson person = (UsualPerson) context.getBean("person", Person.class);
-		assertEquals(expectedPerson, person);
-		System.out.println(person);
+		assertEquals(getExpectedPerson(),
+				context.getBean("person"));
 	}
 
-	private UsualPerson getExpectedPerson() {
-		UsualPerson person = new UsualPerson();
-		person.setAge(35);
-		person.setName("John Smith");
-
-		Country country = new Country();
-		country.setId(1);
-		country.setName("Russia");
-		country.setCodeName("RU");
-
-		person.setCountry(country);
-
-		return person;
-	}
-	
-	@AfterEach
-	void tearDown() throws Exception{
-		if (context != null)
-			context.close();
+	private Person getExpectedPerson() {
+		return new SimplePerson(
+		        1,
+                "John Smith",
+                new SimpleCountry(
+                        1,
+                        "Russia",
+                        "RU"),
+                35,
+                1.78f,
+                true,
+                Arrays.asList("kjhdfga@kjfg.ru")
+        );
 	}
 }
