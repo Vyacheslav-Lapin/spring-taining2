@@ -1,7 +1,6 @@
 package aop;
 
 import lab.model.Bar;
-import lab.model.CustomerBrokenException;
 import lab.model.Person;
 import lab.model.simple.SimplePerson;
 import lombok.SneakyThrows;
@@ -16,7 +15,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.lang.reflect.Field;
 
 import static aop.TestUtils.fromSystemOut;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 @ExtendWith(SpringExtension.class)
@@ -48,8 +46,7 @@ class AopAspectJExceptionTest {
     @Test
     void testAfterThrowingAdvice() {
         String fromOut = fromSystemOut(() ->
-                assertThrows(CustomerBrokenException.class,
-                        () -> bar.sellSquishee(person)));
+                        bar.sellSquishee(person));
 
         //noinspection SpellCheckingInspection
         assertTrue("Customer is not broken ", fromOut.contains("Hmmm..."));

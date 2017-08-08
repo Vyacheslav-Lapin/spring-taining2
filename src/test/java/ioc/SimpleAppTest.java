@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SimpleAppTest {
 
     private static final String CLASSPATH_APPLICATION_CONTEXT_XML =
-            "application-context.xml";
+            "ioc.xml";
 
     private BeanFactory context =
             new ClassPathXmlApplicationContext(
