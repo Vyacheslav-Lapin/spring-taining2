@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <import resource="application-context.xml"/>
+
+    <bean id="id" class="java.lang.Integer" c:value="1"/>
+
+    <!-- person fields -->
+    <bean id="firstName" class="java.lang.String" c:_0="Homer"/>
+    <bean id="lastName" class="java.lang.String" c:_0="Smith"/>
+    <bean id="age" class="java.lang.Integer" c:value="35"/>
+    <bean id="height" class="java.lang.Float" c:value="1.78"/>
+    <bean id="isProgrammer" class="java.lang.Boolean" c:value="true"/>
+    <bean id="broke" class="java.lang.Boolean" c:value="false"/>
+
+    <util:list id="contacts" value-type="java.lang.String">
+        <value>asd@asd.ru</value>
+        <value>+7-905-766-999-998</value>
+    </util:list>
+
+    <!-- country fields -->
+    <bean id="name" class="java.lang.String" c:_0="Russia"/>
+    <bean id="codeName" class="java.lang.String" c:_0="RU"/>
+</beans>

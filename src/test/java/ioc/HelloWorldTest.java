@@ -27,7 +27,7 @@ class HelloWorldTest {
 	static Person getExpectedPerson() {
 		return new SimplePerson(
 		        1,
-                "John",
+                "Homer",
                 "Smith",
                 new SimpleCountry(
                         1,
@@ -36,6 +36,7 @@ class HelloWorldTest {
                 35,
                 1.78f,
                 true,
+                false,
                 Arrays.asList("asd@asd.ru", "+7-905-766-999-998")
         );
 	}

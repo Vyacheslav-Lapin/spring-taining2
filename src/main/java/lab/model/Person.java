@@ -1,19 +1,17 @@
 package lab.model;
 
-import lombok.SneakyThrows;
-
-import java.lang.reflect.Field;
+import java.util.List;
 
 public interface Person {
-    @SneakyThrows
-    default void setName(String name) {
-        Field field = this.getClass().getField("name");
-        field.setAccessible(true);
-        field.set(this, name);
-    }
-
     String getFirstName();
     String getLastName();
+    int getId();
+    Country getCountry();
+    int getAge();
+    float getHeight();
+    boolean isProgrammer();
+    List<String> getContacts();
+    boolean isBroke();
 
     default String getName() {
         return String.format("%s %s", getFirstName(), getLastName());
