@@ -27,7 +27,7 @@ class HelloWorldTest {
 				context.getBean("person"));
 	}
 
-	private Person getExpectedPerson() {
+	static Person getExpectedPerson() {
 		return new SimplePerson(
 		        1,
                 "John Smith",
