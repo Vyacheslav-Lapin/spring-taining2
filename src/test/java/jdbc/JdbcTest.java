@@ -68,7 +68,7 @@ class JdbcTest{
          for (int i = 0; i < CountryDao.COUNTRY_INIT_DATA.length; i++) {
              String[] countryInitData = CountryDao.COUNTRY_INIT_DATA[i];
              Country country =
-                     new SimpleCountry(i, countryInitData[0], countryInitData[1]);
+                     new SimpleCountry(i + 1, countryInitData[0], countryInitData[1]);
              expectedCountryList.add(country);
              if (country.getName().startsWith("A")) {
                  expectedCountryListStartsWithA.add(country);
