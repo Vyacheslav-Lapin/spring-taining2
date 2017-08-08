@@ -12,7 +12,13 @@ public interface Person {
         field.set(this, name);
     }
 
-    String getName ();
+    String getFirstName();
+    String getLastName();
+
+    default String getName() {
+        return String.format("%s %s", getFirstName(), getLastName());
+    }
+
     default void sayHello(Person person) {
         System.out.printf("Hello, %s, I`m $s%n", person, this);
     }

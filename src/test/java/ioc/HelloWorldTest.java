@@ -1,7 +1,8 @@
-import lab.model.simple.SimpleCountry;
+package ioc;
+
 import lab.model.Person;
+import lab.model.simple.SimpleCountry;
 import lab.model.simple.SimplePerson;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,12 +15,8 @@ class HelloWorldTest {
 
 	private static final String APPLICATION_CONTEXT_XML_FILE_NAME = "application-context.xml";
 
-	private BeanFactory context;
-
-	@BeforeEach
-	void setUp() throws Exception {
-		context = new ClassPathXmlApplicationContext(APPLICATION_CONTEXT_XML_FILE_NAME);
-	}
+	private BeanFactory context = new
+            ClassPathXmlApplicationContext(APPLICATION_CONTEXT_XML_FILE_NAME);
 
 	@Test
 	void testInitPerson() {
@@ -30,7 +27,8 @@ class HelloWorldTest {
 	static Person getExpectedPerson() {
 		return new SimplePerson(
 		        1,
-                "John Smith",
+                "John",
+                "Smith",
                 new SimpleCountry(
                         1,
                         "Russia",
@@ -38,7 +36,7 @@ class HelloWorldTest {
                 35,
                 1.78f,
                 true,
-                Arrays.asList("kjhdfga@kjfg.ru")
+                Arrays.asList("asd@asd.ru", "+7-905-766-999-998")
         );
 	}
 }
