@@ -13,7 +13,7 @@ import java.util.List;
 
 import static java.lang.String.format;
 
-@Component
+@Component("countryDao")
 public class JdbcCountryDao extends NamedParameterJdbcDaoSupport implements CountryDao {
     private static final String LOAD_COUNTRIES_SQL = "INSERT INTO country (name, code_name) VALUES ('%s', '%s');";
     private static final String GET_ALL_COUNTRIES_SQL = "SELECT id, name, code_name FROM country";
