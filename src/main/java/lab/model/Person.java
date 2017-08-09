@@ -18,6 +18,6 @@ public interface Person {
     }
 
     default void sayHello(Person person) {
-        System.out.printf("Hello, %s, I`m $s%n", person, this);
+        System.out.printf("Hello, %s, I`m %s%n", person, this);
     }
 }

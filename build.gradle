@@ -27,6 +27,11 @@ dependencies {
             'com.mchange:c3p0:+',
             'org.springframework:spring-jdbc:+',
 
+            // ORM
+            'org.hibernate:hibernate-spatial:+',
+            'org.hibernate:hibernate-validator:+',
+            'org.springframework:spring-orm:+',
+
             // Common
             'org.apache.logging.log4j:log4j-core:+'
 

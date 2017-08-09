@@ -1,13 +1,17 @@
 package lab.model.simple;
 
 import lab.model.Country;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
 @Component("country")
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SimpleCountry implements Country, Serializable {
 
 	private int id;
@@ -15,4 +19,9 @@ public class SimpleCountry implements Country, Serializable {
     private String name;
 
     private String codeName;
+
+    public SimpleCountry(String name, String codeName) {
+        this.name = name;
+        this.codeName = codeName;
+    }
 }
