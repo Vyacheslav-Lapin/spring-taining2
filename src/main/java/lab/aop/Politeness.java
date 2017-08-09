@@ -15,25 +15,24 @@ public class Politeness {
     void sellSquishee() {
     }
 
-    @Before("sellSquishee()")
-    public void sayHello(JoinPoint joinPoint) {
-        Person person = (Person) joinPoint.getArgs()[0];
+    @SuppressWarnings("ArgNamesErrorsInspection")
+    @Before(value = "sellSquishee() && args(person)", argNames = "person")
+    public void sayHello(JoinPoint joinPoint, Person person) {
         System.out.printf("Hello %s. How are you doing?%n", person.getName());
     }
 
     @AfterReturning(pointcut = "sellSquishee()",
-            returning = "retVal", argNames = "retVal")
-    public void askOpinion(Object retVal) {
-        Squishee squishee = (Squishee) retVal;
+            returning = "squishee", argNames = "squishee")
+    public void askOpinion(Squishee squishee) {
         if (squishee != null) {
             String squisheeName = squishee.getName();
             System.out.printf("Is %s Good Enough?%n", squisheeName);
         }
     }
 
-    @Around("sellSquishee()")
-    public Object sayYouAreNotAllowed(ProceedingJoinPoint pjp) throws Throwable {
-        Person person = (Person) pjp.getArgs()[0];
+    @SuppressWarnings("ArgNamesErrorsInspection")
+    @Around(value = "sellSquishee() && args(person)", argNames = "person")
+    public Object sayYouAreNotAllowed(ProceedingJoinPoint pjp, Person person) throws Throwable {
         if (person.isBroke()) {
             System.out.println("Hmmm...");
             return null;
@@ -46,11 +45,13 @@ public class Politeness {
         System.out.println("Good Bye!");
     }
 
-    @Around("sellSquishee()")
-    public Object sayPoliteWordsAndSell(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println("Hi!");
+    @SuppressWarnings("ArgNamesErrorsInspection")
+    @Around(value = "sellSquishee() && args(person)", argNames = "person")
+    public Object sayPoliteWordsAndSell(ProceedingJoinPoint pjp, Person person) throws Throwable {
+        String personName = person.getName();
+        System.out.printf("Hi, %s!%n", personName);
         Object retVal = pjp.proceed();
-        System.out.println("See you!");
+        System.out.printf("See you, %s!%n", personName);
         return retVal;
     }
 }

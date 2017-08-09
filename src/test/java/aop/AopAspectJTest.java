@@ -50,9 +50,9 @@ class AopAspectJTest {
     @Test
     void testAroundAdvice() {
         assertTrue("Around advice is not good enough...",
-                fromOut.contains("Hi!"));
+                fromOut.contains("Hi, "));
         assertTrue("Around advice is not good enough...",
-                fromOut.contains("See you!"));
+                fromOut.contains("See you, "));
     }
 
     @Test
