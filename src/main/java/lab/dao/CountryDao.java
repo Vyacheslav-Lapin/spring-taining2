@@ -7,6 +7,7 @@ import java.util.List;
 public interface CountryDao {
 
 	void save(Country country);
+//	void delete(Country country);
 
 	List<Country> getAllCountries();
 

@@ -47,6 +47,11 @@ public class JdbcCountryDao extends NamedParameterJdbcDaoSupport implements Coun
         updateCountryName(country.getName(), country.getCodeName());
     }
 
+//    @Override
+//    public void delete(Country country) {
+//        // TODO: 09/08/2017 realize it!
+//    }
+
     @Override
     public List<Country> getAllCountries() {
         //noinspection ConstantConditions

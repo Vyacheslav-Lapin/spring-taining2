@@ -30,25 +30,34 @@ class CountryDaoImplTest {
 	@Test
 	void testSaveCountry() {
 
-		countryDao.save(exampleCountry);
+        List<Country> countryList = countryDao.getAllCountries();
+        int sizeBeforeSave = countryList.size();
 
-		List<Country> countryList = countryDao.getAllCountries();
-		assertEquals(1, countryList.size());
-		assertEquals(exampleCountry, countryList.get(0));
+        countryDao.save(exampleCountry);
+
+        countryList = countryDao.getAllCountries();
+		assertEquals(sizeBeforeSave + 1, countryList.size());
+		assertEquals(exampleCountry, countryList.get(sizeBeforeSave));
+
+//		countryDao.delete(exampleCountry);
+//        assertEquals(0, countryDao.getAllCountries().size());
 	}
 
 	@Test
-	void testGtAllCountries() {
+	void testGetAllCountries() {
+        List<Country> countryList = countryDao.getAllCountries();
+        int sizeBeforeSave = countryList.size();
 
-		countryDao.save(new SimpleCountry("Canada", "CA"));
+        countryDao.save(new SimpleCountry("Canada", "CA"));
 
-		List<Country> countryList = countryDao.getAllCountries();
-		assertEquals(2, countryList.size());
+		countryList = countryDao.getAllCountries();
+		assertEquals(sizeBeforeSave + 1, countryList.size());
 	}
 
 	@Test
 	void testGetCountryByName() {
 
+        countryDao.save(exampleCountry);
 		Country country = countryDao.getCountryByName("Australia");
 		assertEquals(exampleCountry, country);
 	}
