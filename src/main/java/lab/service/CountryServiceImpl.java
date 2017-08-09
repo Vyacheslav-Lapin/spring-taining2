@@ -4,6 +4,7 @@ import lab.dao.CountryDao;
 import lab.model.Country;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,7 @@ import static org.springframework.transaction.annotation.Propagation.*;
 @AllArgsConstructor
 public class CountryServiceImpl implements CountryService {
 
+    @Autowired
 	private CountryDao countryDao;
 
 	@Override
@@ -41,32 +43,36 @@ public class CountryServiceImpl implements CountryService {
 	}
 
     @Override
-//    @Transactional(propagation = REQUIRED)
 	public List<Country> getAllCountriesRequired() {
 		return countryDao.getAllCountries();
 	}
 
     @Override
+	@Transactional(propagation = REQUIRES_NEW)
 	public List<Country> getAllCountriesRequiresNew() {
 		return countryDao.getAllCountries();
 	}
 
     @Override
+	@Transactional(propagation = SUPPORTS)
 	public List<Country> getAllCountriesSupports() {
 		return countryDao.getAllCountries();
 	}
 
     @Override
+	@Transactional(propagation = NEVER)
 	public List<Country> getAllCountriesNever() {
 		return countryDao.getAllCountries();
 	}
 
     @Override
+	@Transactional(propagation = MANDATORY)
 	public List<Country> getAllCountriesMandatory() {
 		return countryDao.getAllCountries();
 	}
 
     @Override
+	@Transactional(propagation = NOT_SUPPORTED)
 	public List<Country> getAllCountriesNotSupported() {
 		return countryDao.getAllCountries();
 	}
