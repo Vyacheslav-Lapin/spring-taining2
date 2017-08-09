@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("classpath:jdbc.xml")
-class JdbcTest{
+public class JdbcTest{
 
 	@Autowired
 	private JdbcCountryDao countryDao;
